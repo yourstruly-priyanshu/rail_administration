@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tatkal Booking System</title>
+  <style>
+    h2 {
+      text-align: center;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    nav {
+      background-color: #514caf;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: white;
+    }
+
+    section {
+      margin: 20px;
+      position: relative;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    label {
+      margin-bottom: 8px;
+    }
+
+    input,
+    select {
+      margin-bottom: 16px;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #6d4caf;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .login-register {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Tatkal Booking System</h1>
+  </header>
+
+  <nav>
+    <a href="/index">Book a Ticket</a> |
+    <a href="/tatkal">Book Tatkal</a>  |
+    <a href="/pnr">PNR Status</a> |
+    <a href="/login">Login</a> |
+    <a href="/register">Register</a> |
+    <a href="/complaintrefund">Complaint and Refund</a> |
+    <a href="/maintenance"> Maintainence</a>
+  </nav>
+
+  <section id="main-section">
+    <h2>Book a Ticket</h2>
+    <form action="/api/bookTicket" method="POST" onsubmit="event.preventDefault(); bookTicket();">
+      <label for="from">From:</label>
+      <input type="text" id="from" name="from" required>
+
+      <label for="to">To:</label>
+      <input type="text" id="to" name="to" required>
+
+      <label for="class">Class:</label>
+      <select id="class" name="ticketClass" required>
+        <option value="General">General</option>
+        <option value="Sleeper">Sleeper</option>
+        <option value="3 Tier AC">3 Tier AC</option>
+        <option value="2 Tier AC">2 Tier AC</option>
+        <option value="First-class">First Class</option>
+      </select>
+
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required>
+
+      <button type="submit">Book Ticket</button>
+    </form>
+  </section>
+  <script>
+    function bookTicket() {
+      const from = document.getElementById('from').value;
+      const to = document.getElementById('to').value;
+      const ticketClass = document.getElementById('class').value;
+      const date = document.getElementById('date').value;
+
+      const bookingDetails = {
+        from: from,
+        to: to,
+        ticketClass: ticketClass,
+        date: date
+      };
+
+      // Simulating a server request (replace with actual server API)
+      fetch('/api/bookTicket', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bookingDetails),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Ticket booked successfully:', data);
+          alert('Ticket booked successfully!');
+          refreshPage();
+        })
+        .catch(error => {
+          console.error('Error booking ticket:', error);
+          alert('Error booking ticket. Please try again.');
+        });
+    }
+
+    function refreshPage() {
+      location.reload();
+    }
+  </script>
+
+</body>
+
+</html>

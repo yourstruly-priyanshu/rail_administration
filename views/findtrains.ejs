@@ -1,0 +1,121 @@
+<!-- trainDetails.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train Details</title>
+  <style>
+    h2 {
+      text-align: center;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    nav {
+      background-color: #514caf;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: white;
+    }
+
+    section {
+      max-width: 600px;
+      margin: auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    label {
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: #000;
+    }
+
+    button {
+      margin: auto;
+      background-color: #6d4caf;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Rail Administration</h1>
+  </header>
+
+  <nav>
+    <a href="/index">Book a Ticket</a> |
+    <a href="/tatkal">Book Tatkal</a>  |
+    <a href="/pnr">PNR Status</a> |
+    <a href="/login">Login</a> |
+    <a href="/register">Register</a> |
+    <a href="/complaintrefund">Complaint and Refund</a> |
+    <a href="/maintenance"> Maintainence</a>
+  </nav>
+
+  <section>
+    <h2>Train Details</h2>
+    <spanfor="DEPARTURE">Departure:</span>
+    <span><%= train.departure %></span>
+    <p></p>
+    <spanfor="ARRIVAL">Arrival:</span>
+    <span><%= train.arrival %></span>
+    <p></p>
+    <span for="DISTANCE">Distance:</span>
+    <span><%= train.distance %> km</span>
+    <p></p>
+    <span for="fare">Fare:</span>
+    <span>$<%= train.fare %></span>
+    <p></p>
+    <span for="time">Time:</span>
+    <span><%= train.time %></span>
+    <p></p>
+    <span for="trainClass">Train Class:</span>
+    <span><%= train.trainClass %></span>
+    <p></p>
+    <span for="availableTickets">Available Tickets:</span>
+    <span><%= train.availableTickets %></span>
+    <p></p>
+    <button onclick="goBack()">Go Back</button>
+  </section>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+
+</body>
+
+</html>

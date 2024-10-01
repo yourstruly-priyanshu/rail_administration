@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check PNR Status</title>
+  <style>
+    h2 {
+      text-align: center;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f2f2;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    nav {
+      background-color: #514caf;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: white;
+    }
+
+    section {
+      margin: 20px;
+      position: relative;
+    }
+
+    form {
+      max-width: 300px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    label {
+      margin-bottom: 8px;
+    }
+
+    input {
+      margin-bottom: 16px;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #6d4caf;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Rail Administration</h1>
+  </header>
+
+  <nav>
+    <a href="/index">Book a Ticket</a> |
+    <a href="/tatkal">Book Tatkal</a>  |
+    <a href="/pnr">PNR Status</a> |
+    <a href="/login">Login</a> |
+    <a href="/register">Register</a> |
+    <a href="/complaintrefund">Complaint and Refund</a> |
+    <a href="/maintenance"> Maintainence</a>
+  </nav>
+
+  <section>
+    <h2>Check PNR Status</h2>
+    <form onsubmit="checkPNRStatus(event)">
+      <label for="pnrNumber">Enter PNR Number:</label>
+      <input type="text" id="pnrNumber" name="pnrNumber" required>
+
+      <button type="submit">Check Status</button>
+    </form>
+
+    <div class="result" id="statusResult"></div>
+  </section>
+  <script>
+    function refreshPage() {
+      location.reload();
+    }
+
+    function checkPNRStatus(event) {
+      event.preventDefault();
+      const pnrNumber = document.getElementById("pnrNumber").value;
+      const statusResult = document.getElementById("statusResult");
+
+      // Perform PNR status check logic here
+      // For demonstration purposes, let's assume the PNR is always valid
+      statusResult.innerHTML = <p>PNR ${pnrNumber} is confirmed. Have a safe journey!</p>;
+    }
+  </script>
+
+</body>
+
+</html>
